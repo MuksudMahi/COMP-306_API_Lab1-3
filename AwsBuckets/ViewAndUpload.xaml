@@ -1,0 +1,64 @@
+﻿<Page x:Class="AwsBuckets.ViewAndUpload"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AwsBuckets"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ViewAndUpload">
+
+    <Grid>
+        <ComboBox
+            Name="cbBuckets"
+            SelectionChanged="cbBuckets_SelectionChanged"
+            HorizontalAlignment="Left"
+            Margin="169,49,0,0"
+            VerticalAlignment="Top" 
+            Width="367" Height="41"/>
+        <TextBox
+            Name="tbFileLoc"
+            HorizontalAlignment="Left" 
+            Margin="169,120,0,0" 
+            TextWrapping="Wrap"
+            VerticalAlignment="Top" 
+            Width="367"
+            RenderTransformOrigin="0.101,0.601" 
+            Height="37"/>
+        <Button
+            Name="btnBrowse"
+            Content="Browse"
+            Click="btnBrowse_Click"
+            HorizontalAlignment="Left"
+            Margin="620,49,0,0" 
+            VerticalAlignment="Top"
+            Height="41" Width="142"/>
+        <Button 
+            Name="bntUpload"
+            Content="Upload"
+            Click="bntUpload_Click"
+            HorizontalAlignment="Left"
+            Margin="620,120,0,0" 
+            VerticalAlignment="Top"
+            Height="37" Width="142"/>
+        <DataGrid 
+            Name="dgFiles" 
+            Margin="10,186,264,10"/>
+        <Button Name="btnReturn"
+                Content="Back to Main Window" 
+                Click="btnReturn_Click"
+                HorizontalAlignment="Left"
+                Margin="620,367,0,0" VerticalAlignment="Top" 
+                Height="37" Width="142"/>
+        <Label
+            Content="Bucket"
+            HorizontalAlignment="Left" 
+            Margin="44,57,0,0"
+            VerticalAlignment="Top"/>
+        <Label Content="Object"
+               HorizontalAlignment="Left"
+               Margin="44,126,0,0" 
+               VerticalAlignment="Top"/>
+        <TextBlock Name="tbTest" HorizontalAlignment="Left" Margin="671,259,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+    </Grid>
+</Page>
