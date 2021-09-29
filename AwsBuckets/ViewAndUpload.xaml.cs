@@ -105,28 +105,22 @@ namespace AwsBuckets
             }
             catch (AmazonS3Exception amazonS3Exception)
             {
-                if (amazonS3Exception.ErrorCode != null && (amazonS3Exception.ErrorCode.Equals("InvalidAccessKeyId") || amazonS3Exception.ErrorCode.Equals("InvalidSecurity")))
-                {
-                    Console.WriteLine("Please check the provided AWS Credentials.");
-                    Console.WriteLine("If you haven't signed up for Amazon S3, please visit http://aws.amazon.com/s3");
-                }
-                else
-                {
-                    Console.WriteLine("An error occurred with the message '{0}' when listing objects", amazonS3Exception.Message);
-                }
+                tbTest.Text = amazonS3Exception.Message.ToString();
             }
         }
 
         private async void uploadFileAsync()
         {
             string filePath = tbFileLoc.Text;
-            if(filePath!="")
+            if (filePath != "" && cbBuckets.SelectedItem != null)
             {
                 bucketName = cbBuckets.SelectedItem.ToString();
                 try
                 {
                     var fileTransferUtility = new TransferUtility(s3Client);
                     await fileTransferUtility.UploadAsync(filePath, bucketName);
+                    bucketObjects.Clear();
+                    tbTest.Text = "";
                     ListingObjects();
                 }
                 catch (AmazonS3Exception e)
@@ -137,6 +131,10 @@ namespace AwsBuckets
                 {
                     tbTest.Text = e.Message.ToString();
                 }
+            }
+            else
+            {
+                tbTest.Text = "Select bucket name and file location";
             }
 
         }
