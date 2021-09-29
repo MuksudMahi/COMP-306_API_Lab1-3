@@ -30,20 +30,27 @@
             <Button Grid.Column="2"
                     Content="Create Bucket"
                     x:Name="btnCreateBucket"
-                    Click="btnCreateBucket_Click" Height="45" VerticalAlignment="Bottom">
+                    Click="btnCreateBucket_Click"
+                    Height="45"
+                    Background="#6395EE"
+                    Foreground="#FFFF19"
+                    VerticalAlignment="Bottom">
             </Button>
         </Grid>
         <TextBlock x:Name="tbMessage"
                    Grid.Row="1">
         </TextBlock>
         <DataGrid Grid.Row="2"
-                  Name="dgBucketList">
+                  Name="dgBucketList"
+                  IsReadOnly="True">
         </DataGrid>
         <Button Grid.Row="3"
                 Content="Back to Main Window"
                 x:Name="btnReturnToMain"
                 Click='btnReturnToMain_Click'
                 Width="300"
+                Background="#6395EE"
+                Foreground="#FFFF19"
                 HorizontalAlignment="Center">
         </Button>
     </Grid>

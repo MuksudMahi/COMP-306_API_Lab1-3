@@ -36,7 +36,8 @@ namespace AwsBuckets
         public CreateBucketPage()
         {
             InitializeComponent();
-            getConnection();
+            //getConnection();
+            s3Client = AWSConnection.getConnection();
             GetBucketList();
             dgBucketList.ItemsSource = BucketList;
         }
@@ -47,19 +48,7 @@ namespace AwsBuckets
             await CreateBucketAsync(name);
         }
 
-        private void getConnection()
-        {
-            var builder = new ConfigurationBuilder()
-                    .SetBasePath(Directory.GetCurrentDirectory())
-                    .AddJsonFile("AppSettings.json", optional: false, reloadOnChange: true);
-
-            var accessKeyID = builder.Build().GetSection("AWSCredentials").GetSection("AccesskeyID").Value;
-            var secretKey = builder.Build().GetSection("AWSCredentials").GetSection("Secretaccesskey").Value;
-
-            var credentials = new BasicAWSCredentials(accessKeyID, secretKey);
-            s3Client = new AmazonS3Client(credentials, bucketRegion);
-        }
-
+  
         private static async void GetBucketList()
         {
             BucketList.Clear();
@@ -108,6 +97,7 @@ namespace AwsBuckets
             MainPage mainPage = new MainPage();
             MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
             mainWindow.Height = 300;
+            mainWindow.Title = "Lab#1";
             mainWindow.Content = mainPage;
         }
     }

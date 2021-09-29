@@ -23,6 +23,8 @@
                     Content="Create Bucket"
                     Height="40"
                     Width="200"
+                    Background="#6395EE"
+                    Foreground="#FFFF19"
                     Click="btnCreate_Click"
                     Grid.Column="0">
             </Button>
@@ -31,6 +33,8 @@
                     Content="Object Level Operations"
                     Height="40"
                     Width="200"
+                    Background="#6395EE"
+                    Foreground="#FFFF19"
                     Click="btnObj_Click"
                     Grid.Column="1">
             </Button>
@@ -38,6 +42,8 @@
                     Content="Exit"
                     Height="40"
                     Width="200"
+                    Background="#6395EE"
+                    Foreground="#FFFF19"
                     Click="btnExit_Click"
                     Grid.Column="2">
             </Button>

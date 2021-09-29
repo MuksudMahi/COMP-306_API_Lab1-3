@@ -25,24 +25,23 @@ namespace AwsBuckets
         public MainPage()
         {
             InitializeComponent();
-            viewAndUpload = new ViewAndUpload();
-            page = new CreateBucketPage();
-
-
         }
 
         private void btnCreate_Click(object sender, RoutedEventArgs e)
         {
-            
+            page = new CreateBucketPage();
             MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
             mainWindow.Height = 450;
+            mainWindow.Title = "Create Bucket";
             mainWindow.Content = page;
         }
 
         private void btnObj_Click(object sender, RoutedEventArgs e)
         {
+            viewAndUpload = new ViewAndUpload();
             MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
             mainWindow.Height = 450;
+            mainWindow.Title = "Upload Object to S3 Bucket";
             mainWindow.Content = viewAndUpload;
         }
 

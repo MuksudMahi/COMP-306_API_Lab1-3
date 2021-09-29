@@ -32,6 +32,8 @@
             HorizontalAlignment="Left"
             Margin="620,49,0,0" 
             VerticalAlignment="Top"
+            Background="#6395EE"
+            Foreground="#FFFF19"
             Height="41" Width="142"/>
         <Button 
             Name="bntUpload"
@@ -40,15 +42,20 @@
             HorizontalAlignment="Left"
             Margin="620,120,0,0" 
             VerticalAlignment="Top"
+            Background="#6395EE"
+            Foreground="#FFFF19"
             Height="37" Width="142"/>
         <DataGrid 
             Name="dgFiles" 
-            Margin="10,186,264,10"/>
+            Margin="10,186,264,10"
+            IsReadOnly="True"/>
         <Button Name="btnReturn"
                 Content="Back to Main Window" 
                 Click="btnReturn_Click"
                 HorizontalAlignment="Left"
-                Margin="620,367,0,0" VerticalAlignment="Top" 
+                Margin="620,367,0,0" VerticalAlignment="Top"
+                Background="#6395EE"
+                Foreground="#FFFF19"
                 Height="37" Width="142"/>
         <Label
             Content="Bucket"

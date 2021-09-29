@@ -38,7 +38,7 @@ namespace AwsBuckets
         public ViewAndUpload()
         {
             InitializeComponent();
-            getConnection();
+            s3Client = AWSConnection.getConnection();
             prepareComboBox();
         }
 
@@ -47,19 +47,6 @@ namespace AwsBuckets
             cbBuckets.ItemsSource = bucketsCB;
             GetBucketList();
 
-        }
-
-        private void getConnection()
-        {
-            var builder = new ConfigurationBuilder()
-                    .SetBasePath(Directory.GetCurrentDirectory())
-                    .AddJsonFile("AppSettings.json", optional: false, reloadOnChange: true);
-
-            var accessKeyID = builder.Build().GetSection("AWSCredentials").GetSection("AccesskeyID").Value;
-            var secretKey = builder.Build().GetSection("AWSCredentials").GetSection("Secretaccesskey").Value;
-
-            var credentials = new BasicAWSCredentials(accessKeyID, secretKey);
-            s3Client = new AmazonS3Client(credentials, bucketRegion);
         }
 
         private static async void GetBucketList()
@@ -87,6 +74,7 @@ namespace AwsBuckets
             MainPage mainPage = new MainPage();
             MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
             mainWindow.Height = 300;
+            mainWindow.Title = "Lab#1";
             mainWindow.Content = mainPage;
         }
 
@@ -131,21 +119,25 @@ namespace AwsBuckets
         private async void uploadFileAsync()
         {
             string filePath = tbFileLoc.Text;
-            bucketName = cbBuckets.SelectedItem.ToString();
-            try
+            if(filePath!="")
             {
-                var fileTransferUtility = new TransferUtility(s3Client);
-                await fileTransferUtility.UploadAsync(filePath, bucketName);
-                ListingObjects();
+                bucketName = cbBuckets.SelectedItem.ToString();
+                try
+                {
+                    var fileTransferUtility = new TransferUtility(s3Client);
+                    await fileTransferUtility.UploadAsync(filePath, bucketName);
+                    ListingObjects();
+                }
+                catch (AmazonS3Exception e)
+                {
+                    tbTest.Text = e.Message.ToString();
+                }
+                catch (Exception e)
+                {
+                    tbTest.Text = e.Message.ToString();
+                }
             }
-            catch (AmazonS3Exception e)
-            {
 
-            }
-            catch (Exception e)
-            {
-
-            }
         }
     }
 }
