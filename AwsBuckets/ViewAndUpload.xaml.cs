@@ -67,6 +67,7 @@ namespace AwsBuckets
         private void bntUpload_Click(object sender, RoutedEventArgs e)
         {
             uploadFileAsync();
+            tbFileLoc.Text = "";
         }
 
         private void btnReturn_Click(object sender, RoutedEventArgs e)

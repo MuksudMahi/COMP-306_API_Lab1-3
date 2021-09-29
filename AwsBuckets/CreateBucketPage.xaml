@@ -38,6 +38,9 @@
             </Button>
         </Grid>
         <TextBlock x:Name="tbMessage"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"
+                   Foreground="#BA82EF"
                    Grid.Row="1">
         </TextBlock>
         <DataGrid Grid.Row="2"

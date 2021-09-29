@@ -74,6 +74,7 @@ namespace AwsBuckets
 
                     putBucketResponse = await s3Client.PutBucketAsync(putBucketRequest);
                     GetBucketList();
+                    tbMessage.Text = "";
                 }
                 else if(await AmazonS3Util.DoesS3BucketExistV2Async(s3Client, bucketName))
                 {
