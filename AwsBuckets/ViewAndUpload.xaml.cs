@@ -81,6 +81,7 @@ namespace AwsBuckets
 
         private void cbBuckets_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            tbTest.Text = "";
             bucketObjects.Clear();
             ListingObjects();
             //tbTest.Text = cbBuckets.SelectedItem.ToString();

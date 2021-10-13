@@ -14,7 +14,7 @@ namespace AwsBuckets
     public static class AWSConnection
     {
         private static AmazonS3Client s3Client;
-        private static RegionEndpoint bucketRegion=RegionEndpoint.CACentral1;
+        private static RegionEndpoint bucketRegion=RegionEndpoint.USEast1;
 
         public static AmazonS3Client getConnection()
         {
