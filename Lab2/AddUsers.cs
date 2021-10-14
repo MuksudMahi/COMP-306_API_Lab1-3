@@ -15,13 +15,27 @@ namespace Lab2
         public static void RunDataModelSample()
         {
             DynamoDBContext context = new DynamoDBContext(client);
-            Console.WriteLine("Creating movie");
+            //Console.WriteLine("Creating movie");
             User user1 = new User
             {
                 Name = "Admin",
                 Password="admin"
             };
             context.Save(user1);
+
+            User user2 = new User
+            {
+                Name = "AdminTwo",
+                Password = "admin"
+            };
+            context.Save(user2);
+
+            User user3 = new User
+            {
+                Name = "AdminThree",
+                Password = "admin"
+            };
+            context.Save(user3);
         }
 
     }

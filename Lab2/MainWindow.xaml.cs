@@ -12,7 +12,7 @@ namespace Lab2
         public MainWindow()
         {
             CreateTable.createTable();
-            Thread.Sleep(5000);
+            //Thread.Sleep(5000);
             InitializeComponent();
             AddUsers.RunDataModelSample();
         }

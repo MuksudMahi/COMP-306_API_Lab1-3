@@ -61,6 +61,10 @@ namespace Lab2
                 Run bookName = new Run();
                 Run author = new Run();
                 Button button = new Button();
+
+                bookName.FontWeight = FontWeights.Bold;
+                bookName.FontSize = 20;
+
                 button.Name = "btnBook" + rows.ToString();
                 buttonMapping.Add(button.Name, book);
 
@@ -70,14 +74,15 @@ namespace Lab2
                 textBlock.Inlines.Add(bookName);
                 textBlock.Inlines.Add(new LineBreak());
                 textBlock.Inlines.Add(author);
+                //textBlock.TextAlignment = TextAlignment.Left;
+                button.HorizontalContentAlignment = HorizontalAlignment.Left;
 
                 button.Height = 50;
-                button.Width = book.BookName.Length*10;
+                //button.Width = book.BookName.Length*10;
 
-                //button.Name = book.BookName;
                 button.Content = textBlock;
                 button.Click += Button_Click;
-                stackPanel.HorizontalAlignment = HorizontalAlignment.Left;
+                stackPanel.HorizontalAlignment = HorizontalAlignment.Stretch;
                 stackPanel.Children.Add(button);
 
 

@@ -8,13 +8,18 @@
         Title="BookList" Height="450" Width="800">
     <Grid >
         <Grid.RowDefinitions>
+            <RowDefinition Height="1*"></RowDefinition>
             <RowDefinition Height=".5*"></RowDefinition>
-            <RowDefinition Height="9.5*"></RowDefinition>
+            <RowDefinition Height="8*"></RowDefinition>
         </Grid.RowDefinitions>
         <TextBlock x:Name="tbWelcome"
-                   Text="Hello">
+                   Grid.Row="0"
+                   Background="#5E9EA0"
+                   Text="Hello"
+                   FontSize="20"
+                   FontWeight="Bold">
         </TextBlock>
-        <Grid Name="bookGrid" Grid.Row="1">
+        <Grid Name="bookGrid" Grid.Row="2">
             
         </Grid>
         <TextBlock Name ="tbTest" HorizontalAlignment="Left" Margin="645,293,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>

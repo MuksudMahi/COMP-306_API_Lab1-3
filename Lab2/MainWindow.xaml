@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lab2"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="600">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -25,24 +25,39 @@
                  Width="340" Height="35"/>
         <Label Content="Password" 
                HorizontalAlignment="Left"
-               Margin="108,217,0,0"
+               Margin="10,217,0,0"
                VerticalAlignment="Top"
                Width="90" Height="35"/>
         <Label Content="User Name"
                HorizontalAlignment="Left"
-               Margin="108,151,0,0"
+               Margin="10,151,0,0"
                VerticalAlignment="Top" 
                Height="35" Width="90"/>
         <Button Content="Login" 
                 Name="btnLogin"
                 HorizontalAlignment="Left"
-                Margin="462,274,0,0"
+                Margin="198,257,0,0"
                 VerticalAlignment="Top"
-                Width="108" Height="42" Click="btnLogin_Click">
+                Background="#5E9EA0"
+                Width="199" Height="42" Click="btnLogin_Click">
         </Button>
-        <TextBlock HorizontalAlignment="Left"
+        <TextBlock HorizontalAlignment="Center"
+                   TextAlignment="Center"
                    Name="tbMessage"
-                   Margin="227,274,0,0" 
+                   Margin="181,304,182.6,0" 
                    TextWrapping="Wrap"  VerticalAlignment="Top" Width="230"/>
+        <Image
+            HorizontalAlignment="Left"
+            Height="72" Margin="250,10,0,0"
+            VerticalAlignment="Top" Width="82"
+            Source="/images/DynamoDB.png"/>
+        <TextBlock 
+            Text="Lab#2 - Amazon DynamoDB Service"
+            TextAlignment="Center"
+            FontWeight="Bold"
+            FontSize="16px"
+            HorizontalAlignment="Left"
+            Margin="127,105,0,0" VerticalAlignment="Top"
+            Width="340" RenderTransformOrigin="0.354,0.882"/>
     </Grid>
 </Window>

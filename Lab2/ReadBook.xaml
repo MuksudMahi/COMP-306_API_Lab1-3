@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Lab2" xmlns:PdfViewer="clr-namespace:Syncfusion.Windows.PdfViewer;assembly=Syncfusion.PdfViewer.WPF"
         mc:Ignorable="d"
         Closing="Window_Closing"
-        Title="ReadBook" Height="450" Width="800">
+        Title="ReadBook" Height="720" Width="1080">
     <Grid>
         <PdfViewer:PdfViewerControl x:Name="pdfReader"/>
     </Grid>
