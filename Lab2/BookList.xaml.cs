@@ -74,12 +74,10 @@ namespace Lab2
                 textBlock.Inlines.Add(bookName);
                 textBlock.Inlines.Add(new LineBreak());
                 textBlock.Inlines.Add(author);
-                //textBlock.TextAlignment = TextAlignment.Left;
+
+
                 button.HorizontalContentAlignment = HorizontalAlignment.Left;
-
                 button.Height = 50;
-                //button.Width = book.BookName.Length*10;
-
                 button.Content = textBlock;
                 button.Click += Button_Click;
                 stackPanel.HorizontalAlignment = HorizontalAlignment.Stretch;
@@ -90,8 +88,6 @@ namespace Lab2
                 bookGrid.Children.Add(stackPanel);
                 Grid.SetRow(stackPanel, rows);
                 rows+=rows+2;
-                //tbTest.Text = book.BookName;
-
             }
         }
 
@@ -99,7 +95,6 @@ namespace Lab2
         {
             Button button = sender as Button;
             BookShelf selectedBook = buttonMapping[button.Name];
-            //GetSelectedItem(selectedBook);
             ReadBook readBook = new ReadBook(selectedBook);
             this.Close();
             readBook.Show();
@@ -112,32 +107,6 @@ namespace Lab2
             var books = await context.ScanAsync<BookShelf>(scanConditions).GetRemainingAsync();
             var bookList = books.OrderByDescending(book => Convert.ToDateTime(book.Accessed)).ToList();
             return bookList;
-        }
-
-        public async void GetSelectedItem(BookShelf book)
-        {
-            MemoryStream content = await GetSelectedItemFromS3("bucket-lab-2", book);
-            //Ebookreader reader = new Ebookreader(client, dynamoclient, user, bookId);
-            this.Close();
-            //reader.pdfReader.Load(content);
-            //reader.pdfReader.CurrentPage = pgnumber;
-            //reader.Show();
-            ReadBook read = new ReadBook(book);
-            read.pdfReader.Load(content);
-            read.pdfReader.CurrentPage = book.Bookmark;
-            read.Show();
-
-        }
-
-        private async Task<MemoryStream> GetSelectedItemFromS3(string bucketName, BookShelf book)
-        {
-            GetObjectRequest request = new GetObjectRequest();
-            request.BucketName = bucketName;
-            request.Key = book.Key;
-            GetObjectResponse resp = await s3Client.GetObjectAsync(request);
-            MemoryStream documentStream = new MemoryStream();
-            resp.ResponseStream.CopyTo(documentStream);
-            return documentStream;
         }
     }
 }

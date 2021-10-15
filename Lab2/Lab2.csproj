@@ -222,5 +222,8 @@
   <ItemGroup>
     <Resource Include="images\DynamoDB.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\centennial.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -34,22 +34,22 @@ namespace Lab2
         {
             InitializeComponent();
             bookShelf = selectedBook;
-            GetSelectedItem(selectedBook);
+            GetSelectedItem();
         }
 
-        public async void GetSelectedItem(BookShelf book)
+        public async void GetSelectedItem()
         {
-            MemoryStream content = await GetSelectedItemFromS3("bucket-lab-2", book);
+            MemoryStream content = await GetSelectedItemFromS3("bucket-lab-2");
             pdfReader.Load(content);
-            pdfReader.CurrentPage = book.Bookmark;
+            pdfReader.CurrentPage = bookShelf.Bookmark;
 
         }
 
-        private async Task<MemoryStream> GetSelectedItemFromS3(string bucketName, BookShelf book)
+        private async Task<MemoryStream> GetSelectedItemFromS3(string bucketName)
         {
             GetObjectRequest request = new GetObjectRequest();
             request.BucketName = bucketName;
-            request.Key = book.Key;
+            request.Key = bookShelf.Key;
             GetObjectResponse resp = await s3Client.GetObjectAsync(request);
             MemoryStream documentStream = new MemoryStream();
             resp.ResponseStream.CopyTo(documentStream);

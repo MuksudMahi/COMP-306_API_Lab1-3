@@ -20,7 +20,7 @@ namespace Lab2
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
             string userName = tbUserName.Text;
-            string password = tbPassword.Text;
+            string password = tbPassword.Password;
             User user=null;
 
             if(userName!="" && password!="")

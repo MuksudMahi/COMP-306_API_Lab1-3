@@ -58,7 +58,7 @@ namespace Lab2
                     createResponse = client.CreateTable(createRequest);
 
                 }
-                catch (Exception ex)
+                catch (AmazonDynamoDBException ex)
                 {
                     Console.Error.WriteLine("Error: failed to create the new table; " + ex.Message);
                     return;

@@ -7,6 +7,10 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="600">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="8.5*"></RowDefinition>
+            <RowDefinition Height="1.5*"></RowDefinition>
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition Width="0*"/>
@@ -17,10 +21,9 @@
                  TextWrapping="Wrap" 
                  VerticalAlignment="Top" 
                  Width="340" Height="35"/>
-        <TextBox HorizontalAlignment="Center" 
+        <PasswordBox HorizontalAlignment="Center" 
                  Name="tbPassword"
                  Margin="0,217,0,0" 
-                 TextWrapping="Wrap" 
                  VerticalAlignment="Top"
                  Width="340" Height="35"/>
         <Label Content="Password" 
@@ -59,5 +62,18 @@
             HorizontalAlignment="Left"
             Margin="127,105,0,0" VerticalAlignment="Top"
             Width="340" RenderTransformOrigin="0.354,0.882"/>
+        <Grid Grid.Row="1" Background="#5E9EA0">
+            <TextBlock
+                HorizontalAlignment="Left" 
+                Margin="10,10,0,0" TextWrapping="Wrap"
+                Text="Muksud Hussain Mahi" 
+                VerticalAlignment="Top" Width="119" Height="22"/>
+            <Image 
+                HorizontalAlignment="Left" 
+                Height="41" Margin="134,0,0,0" 
+                VerticalAlignment="Top" Width="88"
+                Source="/images/centennial.png"/>
+
+        </Grid>
     </Grid>
 </Window>
