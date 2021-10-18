@@ -48,13 +48,13 @@ namespace Lab2
             tbWelcome.Text += " " + UserName;
             foreach (BookShelf book in bookLists)
             {
-                RowDefinition gridRow1 = new RowDefinition();
-                gridRow1.Height = new GridLength(50);
-                bookGrid.RowDefinitions.Add(gridRow1);
+                //RowDefinition gridRow1 = new RowDefinition();
+                //gridRow1.Height = new GridLength(50);
+                //bookGrid.RowDefinitions.Add(gridRow1);
 
-                RowDefinition gridRow2 = new RowDefinition();
-                gridRow2.Height = new GridLength(10);
-                bookGrid.RowDefinitions.Add(gridRow2);
+                //RowDefinition gridRow2 = new RowDefinition();
+                //gridRow2.Height = new GridLength(10);
+                //bookGrid.RowDefinitions.Add(gridRow2);
 
                 StackPanel stackPanel = new StackPanel();
                 TextBlock textBlock = new TextBlock();
@@ -87,7 +87,7 @@ namespace Lab2
 
                 bookGrid.Children.Add(stackPanel);
                 Grid.SetRow(stackPanel, rows);
-                rows+=rows+2;
+                //rows+=rows+2;
             }
         }
 

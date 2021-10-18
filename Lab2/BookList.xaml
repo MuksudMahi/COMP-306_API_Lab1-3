@@ -19,10 +19,8 @@
                    FontSize="20"
                    FontWeight="Bold">
         </TextBlock>
-        <Grid Name="bookGrid" Grid.Row="2">
-            
-        </Grid>
-        <TextBlock Name ="tbTest" HorizontalAlignment="Left" Margin="645,293,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+        <StackPanel Name="bookGrid" Grid.Row="2">
 
+        </StackPanel>
     </Grid>
 </Window>
