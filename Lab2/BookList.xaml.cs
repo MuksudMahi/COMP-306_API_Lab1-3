@@ -86,8 +86,8 @@ namespace Lab2
 
 
                 bookGrid.Children.Add(stackPanel);
-                Grid.SetRow(stackPanel, rows);
-                //rows+=rows+2;
+                //Grid.SetRow(stackPanel, rows);
+                rows+=rows+2;
             }
         }
 
