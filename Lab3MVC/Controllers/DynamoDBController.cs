@@ -25,5 +25,24 @@ namespace Lab3MVC.Controllers
             _dynamoDBService.CreateDynamoDBTable();
             return Ok()
 ;        }
+        [Route("putitem")]
+        public IActionResult AddNewEntry([FromQuery] int id, string replyDateTime, double price)
+        {
+            _dynamoDBService.AddNewEntry(id, replyDateTime, price);
+            return Ok();
+        }
+        [Route("getitems")]
+        public async Task<IActionResult> GetItems([FromQuery] int? id)
+        {
+            var response = await _dynamoDBService.GetItems(id);
+            return Ok(response);
+        }
+        [HttpPut]
+        [Route("updateitem")]
+        public async Task<IActionResult> UpdateItem([FromQuery] int id, double price)
+        {
+            var response = await _dynamoDBService.UpdateItem(id, price);
+            return Ok(response);
+        }
     }
 }
