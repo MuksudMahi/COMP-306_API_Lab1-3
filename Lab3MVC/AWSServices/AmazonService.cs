@@ -6,6 +6,7 @@ using Amazon.S3;
 using Amazon.S3.Model;
 using Amazon.S3.Transfer;
 using Lab3MVC.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -19,10 +20,12 @@ namespace Lab3MVC.AWSServices
     {
         private readonly IAmazonS3 _s3Client;
         private readonly IAmazonDynamoDB _dynamoDBClient;
-        private DynamoDBContext context;
+        private readonly DynamoDBContext context;
+        private readonly lab3Context _rdsContext;
         string domain = AppDomain.CurrentDomain.BaseDirectory;
-        public AmazonService(IAmazonDynamoDB dynamoDBClient, IAmazonS3 client)
+        public AmazonService(IAmazonDynamoDB dynamoDBClient, IAmazonS3 client, lab3Context rdsContext)
         {
+            _rdsContext = rdsContext;
             _dynamoDBClient = dynamoDBClient;
             context = new DynamoDBContext(_dynamoDBClient);
             _s3Client = client;
@@ -183,10 +186,11 @@ namespace Lab3MVC.AWSServices
         }
 
 
-        public async Task<Users> GetUsers(string email)
+        public async Task<User> GetUsers(string email)
         {
 
-            return await context.LoadAsync<Users>(email);
+            return await _rdsContext.Users
+                            .FirstOrDefaultAsync(m => m.Email == email);
         }
 
         public async Task<List<Movie>> GetMovies()
@@ -205,8 +209,16 @@ namespace Lab3MVC.AWSServices
         }
 
 
-        public async Task SaveComment(Movie movie)
+        public async Task SaveComment(string email, string movieId,string comment, int RateNum)
         {
+            Movie movie = await GetMovie(movieId);
+            movie.Ratings.Add(new Rating()
+            {
+                RateDate = DateTime.Now,
+                Comment = comment,
+                RateNum = RateNum,
+                Users = email
+            });
             await context.SaveAsync<Movie>(movie);
         }
     }

@@ -7,7 +7,7 @@ namespace Lab3MVC.Models
 {
     public class UsersMovie
     {
-        public Users Users { get; set; }
+        public string Users { get; set; }
         public Movie Movie { get; set; }
     }
 }

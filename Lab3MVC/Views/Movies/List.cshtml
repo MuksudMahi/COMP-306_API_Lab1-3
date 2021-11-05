@@ -4,20 +4,12 @@
 
 <div class="wrap-list">
 
-    <h1>Welcome, @Model.Users.UserName!</h1>
+    <h1>Welcome, @Model.Users!</h1>
     <p class="lead">
-        <span class="btn-link-red btn-align-right"><a asp-action="Upload" asp-route-email="@Model.Users.Email">Upload Movie</a></span>
+        <a class="btn btn-info" asp-action="Upload" asp-route-email="@Model.Users">Upload Movie</a>
     </p>
 
     <table class="table">
-        <thead>
-            <tr>
-                <th>Poster</th>
-                <th>Title</th>
-                <th>Movie Detail</th>
-
-            </tr>
-        </thead>
         <tbody>
             @foreach (var item in Model.Movies)
             {
@@ -32,12 +24,11 @@
         @item.MovieTitle
     </td>
     <td>
-        <a asp-action="Details" asp-route-email="@Model.Users.Email"
+        <a asp-action="Details" asp-route-email="@Model.Users"
            asp-route-movieId="@item.MovieId">Details</a>
     </td>
 
-</tr>
-}
+</tr>}
         </tbody>
     </table>
 </div>

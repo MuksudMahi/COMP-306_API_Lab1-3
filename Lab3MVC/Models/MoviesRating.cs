@@ -6,6 +6,6 @@ namespace Lab3MVC.Models
     {
         public Movie Movie { get; set; }
         public Rating Rating { get; set; }
-        public Users Users { get; set; }
+        public string Users { get; set; }
     }
 }

@@ -18,28 +18,28 @@ namespace Lab3MVC.Controllers
     public class MoviesController : Controller
     {
 
-        private readonly IAmazonService _amazonService;
+        private  readonly IAmazonService _amazonService;
 
 
-        public MoviesController(IAmazonDynamoDB dynamoDBClient, IAmazonS3 s3Client)
+        public MoviesController(IAmazonDynamoDB dynamoDBClient, IAmazonS3 s3Client, lab3Context context)
         {
-            _amazonService = new AmazonService(dynamoDBClient, s3Client);
+            _amazonService = new AmazonService(dynamoDBClient, s3Client, context);
             _amazonService.CreateDynamoDBTable();
             
         }
 
-        //public IActionResult List()
-        //{
-        //    return View();
-        //}
-
-        [HttpGet]
+        [HttpPost]
         public IActionResult List()
         {
-            string email = "user@gmail.com";
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult List(string email)
+        {
             MovieList movieList = new MovieList()
             {
-                Users = _amazonService.GetUsers(email).Result,
+                Users = email,
                 Movies = _amazonService.GetMovies().Result
             };
             return View("List", movieList);
@@ -79,7 +79,7 @@ namespace Lab3MVC.Controllers
 
             return View(new UsersMovie()
             {
-                Users = _amazonService.GetUsers(email).Result,
+                Users = email,
                 Movie = _amazonService.GetMovie(movieId).Result
             });
         }
@@ -89,11 +89,10 @@ namespace Lab3MVC.Controllers
         public IActionResult AddComment(string email, string movieId)
         {
 
-            return View(new MoviesRating()
+            return View(new Rating()
             {
-                Movie =_amazonService.GetMovie(movieId).Result,
-                Users = _amazonService.GetUsers(email).Result,
-                Rating = new Rating()
+                MovieId = movieId,
+                Users = email
             });
         }
 
@@ -102,20 +101,8 @@ namespace Lab3MVC.Controllers
         public IActionResult AddComment(string email, string movieId, string comment, int RateNum)
         {
 
-            SaveComment(email, movieId, comment, RateNum);
+            _amazonService.SaveComment(email, movieId, comment, RateNum);
             return RedirectToAction("Details", new { email, movieId });
-        }
-        public async void SaveComment(string email, string MovieId, string comment, int RateNum)
-        {
-            Movie movie = await _amazonService.GetMovie(MovieId);
-            movie.Ratings.Add(new Rating()
-            {
-                RateDate = DateTime.Now,
-                Comment = comment,
-                RateNum = RateNum,
-                Users = await _amazonService.GetUsers(email)
-            });
-           await _amazonService.SaveComment(movie);
         }
 
     }

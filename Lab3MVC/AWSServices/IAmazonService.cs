@@ -10,11 +10,11 @@ namespace Lab3MVC.AWSServices
     interface IAmazonService
     {
         void CreateDynamoDBTable();
-        Task<Users> GetUsers(string email);
+        Task<User> GetUsers(string email);
         Task<Movie> UploadFile(string selectedBucket, string movieTitle, Stream movieVideo, Stream movieImage);
         List<string> GetBuckets();
         Task<List<Movie>> GetMovies();
         Task<Movie> GetMovie(string MovieId);
-        Task SaveComment(Movie movie);
+        Task SaveComment(string email, string movieId, string comment, int RateNum);
     }
 }

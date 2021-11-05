@@ -13,8 +13,6 @@ namespace Lab3MVC.Models
 
         public string MovieTitle { get; set; }
         
-        //public DateTime MovieYear { get; set; }
-
         public S3Link MovieImage { get; set; }
 
         public S3Link MovieVideo { get; set; }
