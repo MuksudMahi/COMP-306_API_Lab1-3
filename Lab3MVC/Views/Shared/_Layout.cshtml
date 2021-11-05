@@ -9,7 +9,10 @@
 </head>
 <body>
     <header>
-        @Html.Partial("_NavBar")
+        @if (ViewData["Title"].ToString() != "Home Page")
+        {
+            @Html.Partial("_NavBar");
+        }
     </header>
     <div class="container">
         <main role="main" class="pb-3">

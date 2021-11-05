@@ -1,16 +1,26 @@
-﻿using Amazon.DynamoDBv2.DataModel;
-using System;
+﻿
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Amazon.DynamoDBv2.DataModel;
+
 
 namespace Lab3MVC.Models
 {
-    [DynamoDBTable("Users")]
+    [DynamoDBTable("Movie")]
     public class Movie
     {
-        [DynamoDBHashKey(AttributeName = "name")]
+        [DynamoDBHashKey]
+        public string MovieId { get; set; }
 
-        public string Name { get; set; }
+        public string MovieTitle { get; set; }
+        
+        //public DateTime MovieYear { get; set; }
+
+        public S3Link MovieImage { get; set; }
+
+        public S3Link MovieVideo { get; set; }
+
+        [DynamoDBProperty(AttributeName = "Ratings")]
+        public List<Rating> Ratings { get; set; } = new List<Rating>();
+
     }
 }

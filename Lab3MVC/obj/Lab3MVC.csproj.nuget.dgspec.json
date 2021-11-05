@@ -42,11 +42,11 @@
           "dependencies": {
             "AWSSDK.Core": {
               "target": "Package",
-              "version": "[3.7.3.29, )"
+              "version": "[3.7.3.31, )"
             },
             "AWSSDK.DynamoDBv2": {
               "target": "Package",
-              "version": "[3.7.0.90, )"
+              "version": "[3.7.0.92, )"
             },
             "AWSSDK.Extensions.NETCore.Setup": {
               "target": "Package",
@@ -54,15 +54,33 @@
             },
             "AWSSDK.S3": {
               "target": "Package",
-              "version": "[3.7.3.22, )"
+              "version": "[3.7.3.24, )"
             },
             "Amazon.Extensions.Configuration.SystemsManager": {
               "target": "Package",
               "version": "[3.0.0, )"
             },
+            "FontAwesome": {
+              "target": "Package",
+              "version": "[4.7.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[5.0.11, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.11, )"
+            },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[5.0.2, )"
+            },
+            "bootstrap": {
+              "target": "Package",
+              "version": "[5.1.2, )"
             }
           },
           "imports": [

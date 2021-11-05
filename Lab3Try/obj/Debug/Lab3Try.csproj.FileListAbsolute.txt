@@ -51,6 +51,9 @@ C:\Users\mahi9\source\repos\301155894(Mahi)_Lab1\Lab3Try\bin\roslyn\vbc.rsp
 C:\Users\mahi9\source\repos\301155894(Mahi)_Lab1\Lab3Try\bin\roslyn\VBCSCompiler.exe
 C:\Users\mahi9\source\repos\301155894(Mahi)_Lab1\Lab3Try\bin\roslyn\VBCSCompiler.exe.config
 C:\Users\mahi9\source\repos\301155894(Mahi)_Lab1\Lab3Try\bin\Antlr3.Runtime.dll
+C:\Users\mahi9\source\repos\301155894(Mahi)_Lab1\Lab3Try\bin\AWSSDK.Core.dll
+C:\Users\mahi9\source\repos\301155894(Mahi)_Lab1\Lab3Try\bin\AWSSDK.DynamoDBv2.dll
+C:\Users\mahi9\source\repos\301155894(Mahi)_Lab1\Lab3Try\bin\AWSSDK.S3.dll
 C:\Users\mahi9\source\repos\301155894(Mahi)_Lab1\Lab3Try\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\mahi9\source\repos\301155894(Mahi)_Lab1\Lab3Try\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\mahi9\source\repos\301155894(Mahi)_Lab1\Lab3Try\bin\Newtonsoft.Json.dll
@@ -62,6 +65,12 @@ C:\Users\mahi9\source\repos\301155894(Mahi)_Lab1\Lab3Try\bin\System.Web.WebPages
 C:\Users\mahi9\source\repos\301155894(Mahi)_Lab1\Lab3Try\bin\System.Web.WebPages.dll
 C:\Users\mahi9\source\repos\301155894(Mahi)_Lab1\Lab3Try\bin\System.Web.WebPages.Razor.dll
 C:\Users\mahi9\source\repos\301155894(Mahi)_Lab1\Lab3Try\bin\WebGrease.dll
+C:\Users\mahi9\source\repos\301155894(Mahi)_Lab1\Lab3Try\bin\AWSSDK.Core.pdb
+C:\Users\mahi9\source\repos\301155894(Mahi)_Lab1\Lab3Try\bin\AWSSDK.Core.xml
+C:\Users\mahi9\source\repos\301155894(Mahi)_Lab1\Lab3Try\bin\AWSSDK.DynamoDBv2.pdb
+C:\Users\mahi9\source\repos\301155894(Mahi)_Lab1\Lab3Try\bin\AWSSDK.DynamoDBv2.xml
+C:\Users\mahi9\source\repos\301155894(Mahi)_Lab1\Lab3Try\bin\AWSSDK.S3.pdb
+C:\Users\mahi9\source\repos\301155894(Mahi)_Lab1\Lab3Try\bin\AWSSDK.S3.xml
 C:\Users\mahi9\source\repos\301155894(Mahi)_Lab1\Lab3Try\bin\System.Web.Helpers.xml
 C:\Users\mahi9\source\repos\301155894(Mahi)_Lab1\Lab3Try\bin\System.Web.Mvc.xml
 C:\Users\mahi9\source\repos\301155894(Mahi)_Lab1\Lab3Try\bin\System.Web.Optimization.xml
@@ -77,12 +86,3 @@ C:\Users\mahi9\source\repos\301155894(Mahi)_Lab1\Lab3Try\obj\Debug\Lab3Try.cspro
 C:\Users\mahi9\source\repos\301155894(Mahi)_Lab1\Lab3Try\obj\Debug\Lab3Try.csproj.CopyComplete
 C:\Users\mahi9\source\repos\301155894(Mahi)_Lab1\Lab3Try\obj\Debug\Lab3Try.dll
 C:\Users\mahi9\source\repos\301155894(Mahi)_Lab1\Lab3Try\obj\Debug\Lab3Try.pdb
-C:\Users\mahi9\source\repos\301155894(Mahi)_Lab1\Lab3Try\bin\AWSSDK.Core.dll
-C:\Users\mahi9\source\repos\301155894(Mahi)_Lab1\Lab3Try\bin\AWSSDK.DynamoDBv2.dll
-C:\Users\mahi9\source\repos\301155894(Mahi)_Lab1\Lab3Try\bin\AWSSDK.S3.dll
-C:\Users\mahi9\source\repos\301155894(Mahi)_Lab1\Lab3Try\bin\AWSSDK.Core.pdb
-C:\Users\mahi9\source\repos\301155894(Mahi)_Lab1\Lab3Try\bin\AWSSDK.Core.xml
-C:\Users\mahi9\source\repos\301155894(Mahi)_Lab1\Lab3Try\bin\AWSSDK.DynamoDBv2.pdb
-C:\Users\mahi9\source\repos\301155894(Mahi)_Lab1\Lab3Try\bin\AWSSDK.DynamoDBv2.xml
-C:\Users\mahi9\source\repos\301155894(Mahi)_Lab1\Lab3Try\bin\AWSSDK.S3.pdb
-C:\Users\mahi9\source\repos\301155894(Mahi)_Lab1\Lab3Try\bin\AWSSDK.S3.xml
