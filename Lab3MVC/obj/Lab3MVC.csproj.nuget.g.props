@@ -373,13 +373,13 @@
     <Import Project="$(NuGetPackageRoot)microsoft.entityframeworkcore.design\5.0.11\build\netcoreapp3.0\Microsoft.EntityFrameworkCore.Design.props" Condition="Exists('$(NuGetPackageRoot)microsoft.entityframeworkcore.design\5.0.11\build\netcoreapp3.0\Microsoft.EntityFrameworkCore.Design.props')" />
   </ImportGroup>
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <PkgMicrosoft_CodeAnalysis_Analyzers Condition=" '$(PkgMicrosoft_CodeAnalysis_Analyzers)' == '' ">C:\Users\mahi9\.nuget\packages\microsoft.codeanalysis.analyzers\3.0.0</PkgMicrosoft_CodeAnalysis_Analyzers>
     <PkgMicrosoft_EntityFrameworkCore_Tools Condition=" '$(PkgMicrosoft_EntityFrameworkCore_Tools)' == '' ">C:\Users\mahi9\.nuget\packages\microsoft.entityframeworkcore.tools\5.0.11</PkgMicrosoft_EntityFrameworkCore_Tools>
     <PkgFontAwesome Condition=" '$(PkgFontAwesome)' == '' ">C:\Users\mahi9\.nuget\packages\fontawesome\4.7.0</PkgFontAwesome>
-    <PkgAWSSDK_Core Condition=" '$(PkgAWSSDK_Core)' == '' ">C:\Users\mahi9\.nuget\packages\awssdk.core\3.7.3.31</PkgAWSSDK_Core>
+    <PkgAWSSDK_Core Condition=" '$(PkgAWSSDK_Core)' == '' ">C:\Users\mahi9\.nuget\packages\awssdk.core\3.7.3.33</PkgAWSSDK_Core>
     <PkgAWSSDK_SimpleSystemsManagement Condition=" '$(PkgAWSSDK_SimpleSystemsManagement)' == '' ">C:\Users\mahi9\.nuget\packages\awssdk.simplesystemsmanagement\3.7.4.11</PkgAWSSDK_SimpleSystemsManagement>
-    <PkgAWSSDK_S3 Condition=" '$(PkgAWSSDK_S3)' == '' ">C:\Users\mahi9\.nuget\packages\awssdk.s3\3.7.3.24</PkgAWSSDK_S3>
-    <PkgAWSSDK_DynamoDBv2 Condition=" '$(PkgAWSSDK_DynamoDBv2)' == '' ">C:\Users\mahi9\.nuget\packages\awssdk.dynamodbv2\3.7.0.92</PkgAWSSDK_DynamoDBv2>
+    <PkgAWSSDK_S3 Condition=" '$(PkgAWSSDK_S3)' == '' ">C:\Users\mahi9\.nuget\packages\awssdk.s3\3.7.4</PkgAWSSDK_S3>
+    <PkgAWSSDK_ElasticBeanstalk Condition=" '$(PkgAWSSDK_ElasticBeanstalk)' == '' ">C:\Users\mahi9\.nuget\packages\awssdk.elasticbeanstalk\3.7.0.93</PkgAWSSDK_ElasticBeanstalk>
+    <PkgAWSSDK_DynamoDBv2 Condition=" '$(PkgAWSSDK_DynamoDBv2)' == '' ">C:\Users\mahi9\.nuget\packages\awssdk.dynamodbv2\3.7.0.94</PkgAWSSDK_DynamoDBv2>
     <PkgAWSSDK_AppConfig Condition=" '$(PkgAWSSDK_AppConfig)' == '' ">C:\Users\mahi9\.nuget\packages\awssdk.appconfig\3.7.0.52</PkgAWSSDK_AppConfig>
   </PropertyGroup>
 </Project>

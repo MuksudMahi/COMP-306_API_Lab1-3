@@ -7,6 +7,8 @@
         <h1 class="h3 mb-3 font-weight-normal">@Model.Movie.MovieTitle</h1>
         <ul style="list-style:none">
             <li> <img width="200" height="250" src="@Model.Movie.MovieImage.GetPreSignedURL(DateTime.Now.AddHours(1))"></li>
+            <li>Actors: @Model.Movie.Actors</li>
+            <li>Description: @Model.Movie.Description</li>
 
             <li>
                 <span class="btn btn-info"><a href="@Model.Movie.MovieVideo.GetPreSignedURL(DateTime.Now.AddHours(1))">Download</a></span>
@@ -24,6 +26,12 @@
                 <h5 class="card-title">@rating.Users</h5>
                 <p class="card-text">@rating.Comment</p>
                 <p class="card-text">Rating: @rating.RateNum/10</p>
+                @if((rating.RateDate-DateTime.Now).TotalDays<=1 && Model.Users==rating.Users)
+                {
+                 <a asp-action="EditComment" asp-route-email="@Model.Users" asp-route-movieId="@Model.Movie.MovieId" asp-route-comment="@rating.Comment" asp-route-rateNum="@rating.RateNum" asp-route-rateDate="@rating.RateDate">Edit</a>
+                <span>|</span>
+                <a asp-action="DeleteComment" asp-route-email="@Model.Users" asp-route-movieId="@Model.Movie.MovieId" asp-route-comment="@rating.Comment" asp-route-rateNum="@rating.RateNum" asp-route-rateDate="@rating.RateDate">Delete</a>
+                }
             </div>
             <div class="card-footer text-muted">
                 @rating.RateDate

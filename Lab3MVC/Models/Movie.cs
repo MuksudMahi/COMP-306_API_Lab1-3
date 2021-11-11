@@ -10,9 +10,11 @@ namespace Lab3MVC.Models
     {
         [DynamoDBHashKey]
         public string MovieId { get; set; }
-
         public string MovieTitle { get; set; }
-        
+        public string Actors { get; set; }
+        public string Description { get; set; }
+        public int Rate { get; set; }
+
         public S3Link MovieImage { get; set; }
 
         public S3Link MovieVideo { get; set; }

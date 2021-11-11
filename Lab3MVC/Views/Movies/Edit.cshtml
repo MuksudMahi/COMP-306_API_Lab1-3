@@ -1,0 +1,45 @@
+﻿@model UsersMovie
+@{ ViewData["Title"] = "Edit"; }
+
+
+<div class="wrap-detail">
+    <div class="text-center mb-4">
+        <h1 class="h3 mb-3 font-weight-normal">@Model.Movie.MovieTitle</h1>
+        <ul style="list-style:none">
+            <li> <img width="200" height="250" src="@Model.Movie.MovieImage.GetPreSignedURL(DateTime.Now.AddHours(1))"></li>
+        </ul>
+    </div>
+</div>
+<form asp-action="Edit" method="post" enctype="multipart/form-data">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="@Model.Movie.MovieId" />
+    <input type="hidden" asp-for="@Model.Users" />
+    <input type="hidden" asp-for="@Model.Movie.MovieImage" />
+    <input type="hidden" asp-for="@Model.Movie.MovieVideo" />
+    <input type="hidden" asp-for="@Model.Movie.Ratings" />
+    <div class="form-group">
+        <label asp-for="@Model.Movie.MovieTitle" class="control-label">Title</label>
+        <input asp-for="@Model.Movie.MovieTitle" Value="@Model.Movie.MovieTitle" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.Movie.Actors" class="control-label">Actors</label>
+        <textarea asp-for="@Model.Movie.Actors" class="form-control"></textarea>
+        <span asp-validation-for="@Model.Movie.Actors" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.Movie.Description" class="control-label">Description</label>
+        <textarea asp-for="@Model.Movie.Description" class="form-control"></textarea>
+        <span asp-validation-for="@Model.Movie.Description" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.Movie.Rate" class="control-label">Rating</label>
+        <input asp-for="@Model.Movie.Rate" type="number" min="1" max="10" class="form-control" />
+        <span asp-validation-for="@Model.Movie.Rate" class="text-danger"></span>
+    </div>
+    <div class="form-group align-center">
+        <input type="submit" value="Update" class="btn btn-primary" />
+    </div>
+</form>
+
+
+

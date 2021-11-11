@@ -42,11 +42,15 @@
           "dependencies": {
             "AWSSDK.Core": {
               "target": "Package",
-              "version": "[3.7.3.31, )"
+              "version": "[3.7.3.33, )"
             },
             "AWSSDK.DynamoDBv2": {
               "target": "Package",
-              "version": "[3.7.0.92, )"
+              "version": "[3.7.0.94, )"
+            },
+            "AWSSDK.ElasticBeanstalk": {
+              "target": "Package",
+              "version": "[3.7.0.93, )"
             },
             "AWSSDK.Extensions.NETCore.Setup": {
               "target": "Package",
@@ -54,7 +58,7 @@
             },
             "AWSSDK.S3": {
               "target": "Package",
-              "version": "[3.7.3.24, )"
+              "version": "[3.7.4, )"
             },
             "Amazon.Extensions.Configuration.SystemsManager": {
               "target": "Package",
@@ -73,10 +77,6 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[5.0.11, )"
-            },
-            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
-              "target": "Package",
-              "version": "[5.0.2, )"
             },
             "bootstrap": {
               "target": "Package",

@@ -1,6 +1,7 @@
 ﻿using Amazon;
 using Amazon.DynamoDBv2;
 using Amazon.DynamoDBv2.DataModel;
+using Amazon.DynamoDBv2.DocumentModel;
 using Amazon.DynamoDBv2.Model;
 using Amazon.S3;
 using Amazon.S3.Model;
@@ -35,8 +36,11 @@ namespace Lab3MVC.AWSServices
         {
             try
             {
-                CreateMovieTable();
-                CreateUserTable();
+                List<string> currentTables = _dynamoDBClient.ListTablesAsync().Result.TableNames;
+                if (!currentTables.Contains("Movie"))
+                {
+                    CreateMovieTable();
+                }
             }
             catch (Exception)
             {
@@ -56,6 +60,16 @@ namespace Lab3MVC.AWSServices
                     {
                         AttributeName = "MovieId",
                         AttributeType = "S"
+                    },
+                    new AttributeDefinition
+                    {
+                        AttributeName = "MovieTitle",
+                        AttributeType = "S"
+                    },
+                     new AttributeDefinition
+                    {
+                        AttributeName = "Rate",
+                        AttributeType = "N"
                     }
                 },
                 KeySchema = new List<KeySchemaElement>()
@@ -66,37 +80,33 @@ namespace Lab3MVC.AWSServices
                         KeyType = "HASH"
                     }
                 },
-                ProvisionedThroughput = new ProvisionedThroughput
+                GlobalSecondaryIndexes = new List<GlobalSecondaryIndex>()
                 {
-                    ReadCapacityUnits = 5,
-                    WriteCapacityUnits = 5
-                },
-                TableName = tableName
-            };
-            var response = _dynamoDBClient.CreateTableAsync(request);
-
-            WaitUntilTableIsReady(tableName);
-        }
-
-        private void CreateUserTable()
-        {
-            string tableName = "User";
-            var request = new CreateTableRequest()
-            {
-                AttributeDefinitions = new List<AttributeDefinition>()
-                {
-                    new AttributeDefinition
+                    new GlobalSecondaryIndex
                     {
-                        AttributeName = "Email",
-                        AttributeType = "S"
-                    }
-                },
-                KeySchema = new List<KeySchemaElement>()
-                {
-                    new KeySchemaElement
-                    {
-                        AttributeName = "Email",
-                        KeyType = "HASH"
+                        IndexName="SearchByRating",
+                        KeySchema = new List<KeySchemaElement>()
+                        {
+                            new KeySchemaElement
+                            {
+                                AttributeName="Rate",
+                                KeyType="HASH"
+                            },
+                            new KeySchemaElement
+                            {
+                                AttributeName="MovieTitle",
+                                KeyType = "RANGE"
+                            }
+                        },
+                        ProvisionedThroughput = new ProvisionedThroughput
+                        {
+                            ReadCapacityUnits=5,
+                            WriteCapacityUnits=5
+                        },
+                        Projection = new Projection
+                        {
+                            ProjectionType="ALL"
+                        }
                     }
                 },
                 ProvisionedThroughput = new ProvisionedThroughput
@@ -146,12 +156,16 @@ namespace Lab3MVC.AWSServices
             return buckets;
         }
 
-        public async Task<Movie> UploadFile(string BucketName, string MovieTitle, Stream MovieVideoPath, Stream MovieImagePath)
+        public async Task<Movie> UploadFile(string BucketName, string MovieTitle,int Rate, string Actors, string Description, Stream MovieVideoPath, Stream MovieImagePath)
         {
             DynamoDBContext Context = new DynamoDBContext(_dynamoDBClient);
             Movie movie = new Movie();
             movie.MovieId = Guid.NewGuid().ToString();
             movie.MovieTitle = MovieTitle;
+            movie.Rate = Rate;
+            movie.Actors = Actors;
+            movie.Description = Description;
+
             movie.MovieImage = S3Link.Create(Context, BucketName, MovieTitle+".jpg", RegionEndpoint.CACentral1);
             movie.MovieVideo = S3Link.Create(Context, BucketName, MovieTitle + ".avi", RegionEndpoint.CACentral1);
 
@@ -221,5 +235,57 @@ namespace Lab3MVC.AWSServices
             });
             await context.SaveAsync<Movie>(movie);
         }
+
+        public async Task SaveMovie(Movie movie)
+        {
+            await context.SaveAsync(movie);
+        }
+
+        public async Task DeleteMovie(Movie movie)
+        {
+            await context.DeleteAsync(movie);
+        }
+
+        public Movies Search(int rate)
+        {
+            var request = new QueryRequest
+            {
+                TableName = "Movie",
+                IndexName = "SearchByRating",
+                KeyConditionExpression = "Rate = :v_rate",
+                ProjectionExpression = "MovieId, MovieTitle, Rate",
+                ExpressionAttributeValues = new Dictionary<string, AttributeValue>
+                {
+                    {
+                        ":v_rate", new AttributeValue
+                        {
+                            N=rate.ToString()
+                        }
+                    }
+                }
+            };
+            var result = _dynamoDBClient.QueryAsync(request).Result;
+            return new Movies
+            {
+                Items = result.Items.Select(Map).ToList()
+            };
+
+        }
+
+        private Movie Map(Dictionary<string, AttributeValue> result)
+        {
+
+            return new Movie
+            {
+                MovieId = result["MovieId"].S,
+                MovieTitle = result["MovieTitle"].S,
+                Rate = Convert.ToInt32(result["Rate"].N),
+                MovieImage=GetMovie(result["MovieId"].S).Result.MovieImage,
+                MovieVideo = GetMovie(result["MovieId"].S).Result.MovieVideo,
+                Ratings = GetMovie(result["MovieId"].S).Result.Ratings
+            };
+        }
     }
 }
+
+

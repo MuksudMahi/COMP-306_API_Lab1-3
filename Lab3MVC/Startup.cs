@@ -1,7 +1,6 @@
 using Amazon.DynamoDBv2;
 using Amazon.S3;
 using Lab3MVC.Models;
-using Lab3MVC.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -30,17 +29,15 @@ namespace Lab3MVC
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddMvc();
-            services.AddSingleton<IS3Service, S3Service>();
             services.AddAWSService<IAmazonS3>();
             services.AddDefaultAWSOptions(Configuration.GetAWSOptions());
             services.AddAWSService<IAmazonDynamoDB>();
-            services.AddSingleton<IDynamoDBService, DynamoDBService>();
             var builder = new SqlConnectionStringBuilder(Configuration.GetConnectionString("Connection2RDS"));
             builder.UserID = Configuration["DbUser"];
             builder.Password = Configuration["DbPassword"];
             var connection = builder.ConnectionString;
             services.AddDbContext<lab3Context>(options => options.UseSqlServer(connection));
+            //services.AddDbContext<lab3Context>(options => options.UseSqlServer(Configuration.GetConnectionString("Connection2RDS")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

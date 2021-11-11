@@ -8,27 +8,38 @@
     <p class="lead">
         <a class="btn btn-info" asp-action="Upload" asp-route-email="@Model.Users">Upload Movie</a>
     </p>
-
+    <form asp-action="Search" method="get">
+        <input type="hidden" name="email" value="@Model.Users" />
+        <input type="number" name="rate" placeholder="Search by rating" />
+        <input type="submit" class="btn btn-outline-primary" />
+    </form>
     <table class="table">
         <tbody>
             @foreach (var item in Model.Movies)
             {
-<tr>
-    <td>
-        <img src="@item.MovieImage.GetPreSignedURL(DateTime.Now.AddHours(1))"
-             width="80"
-             height="80">
+            <tr>
+                <td>
+                    <img src="@item.MovieImage.GetPreSignedURL(DateTime.Now.AddHours(1))"
+                         width="80"
+                         height="80">
 
-    </td>
-    <td>
-        @item.MovieTitle
-    </td>
-    <td>
-        <a asp-action="Details" asp-route-email="@Model.Users"
-           asp-route-movieId="@item.MovieId">Details</a>
-    </td>
+                </td>
+                <td>
+                    @item.MovieTitle
+                </td>
+                <td>
+                    Rating: @item.Rate
+                </td>
+                <td>
+                    <a asp-action="Details" asp-route-email="@Model.Users"
+                       asp-route-movieId="@item.MovieId">Details</a> |
+                    <a asp-action="Edit" asp-route-email="@Model.Users"
+                       asp-route-movieId="@item.MovieId">Edit</a> |
+                    <a asp-action="Delete" asp-route-email="@Model.Users"
+                       asp-route-movieId="@item.MovieId">Delete</a>
+                </td>
 
-</tr>}
+            </tr>}
         </tbody>
     </table>
 </div>
