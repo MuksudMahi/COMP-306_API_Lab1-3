@@ -19,7 +19,6 @@ namespace Lab3MVC.Models
 
         public S3Link MovieVideo { get; set; }
 
-        [DynamoDBProperty(AttributeName = "Ratings")]
         public List<Rating> Ratings { get; set; } = new List<Rating>();
 
     }
